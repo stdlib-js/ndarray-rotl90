@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,26 +16,18 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var isInteger = require( '@stdlib/assert-is-integer' ).isPrimitive;
-var isndarrayLike = require( '@stdlib/assert-is-ndarray-like' );
-var base = require( '@stdlib/ndarray-base-rotl90' );
-var format = require( '@stdlib/error-tools-fmtprodmsg' );
-
-
-// MAIN //
+import { ndarray } from '@stdlib/types/ndarray';
 
 /**
 * Returns a read-only view of a matrix (or a stack of matrices) rotated 90 degrees counterclockwise.
 *
-* @param {ndarray} x - input array
-* @param {integer} k - number of times to rotate by 90 degrees
-* @throws {TypeError} first argument must be an ndarray
-* @throws {TypeError} second argument must be an integer
-* @returns {ndarray} ndarray view
+* @param x - input array
+* @param k - number of times to rotate by 90 degrees
+* @returns output array
 *
 * @example
 * var array = require( '@stdlib/ndarray-array' );
@@ -46,17 +38,9 @@ var format = require( '@stdlib/error-tools-fmtprodmsg' );
 * var y = rotl90( x, 1 );
 * // returns <ndarray>[ [ 3.0, 6.0 ], [ 2.0, 5.0 ], [ 1.0, 4.0 ] ]
 */
-function rotl90( x, k ) {
-	if ( !isndarrayLike( x ) ) {
-		throw new TypeError( format( 'null4f', x ) );
-	}
-	if ( !isInteger( k ) ) {
-		throw new TypeError( format( 'null7f', k ) );
-	}
-	return base( x, k, false );
-}
+declare function rotl90<T extends ndarray = ndarray>( x: T, k: number ): T;
 
 
 // EXPORTS //
 
-module.exports = rotl90;
+export = rotl90;
